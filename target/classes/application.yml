@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: transaction-service
+  datasource:
+    url: jdbc:h2:mem:transactiondb;DB_CLOSE_DELAY=-1
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+
+app:
+  scheduling:
+    # 10 minutes = 600,000 ms. Setting to 30,000 for easier demo/testing
+    rate: 30000
+
+logging:
+  level:
+    com.capco.transaction: DEBUG
+    org.springframework.web: INFO
